@@ -102,6 +102,10 @@ class Search:
         # Strip leading '! ' for "feeling lucky" queries
         self.feeling_lucky = q.startswith('! ')
         self.query = q[2:] if self.feeling_lucky else q
+
+        append_args = str(os.getenv('WHOOGLE_CONFIG_PREDEFINED_ARGS', ''))
+        self.query += ' ' + append_args
+        
         return self.query
 
     def generate_response(self) -> str:

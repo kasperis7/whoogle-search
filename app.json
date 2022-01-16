@@ -159,6 +159,10 @@
         "description": "[CONFIG] Custom CSS styling (paste in CSS or leave blank)",
         "value": "",
         "required": false
-    }
+    },
+    "WHOOGLE_CONFIG_PREDEFINED_ARGS": {
+      "description": "[CONFIG] Custom predefined args (e.g. 'site:xxx.com')",
+      "value": "",
+      "required": false
   }
 }
