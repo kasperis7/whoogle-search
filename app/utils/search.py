@@ -104,8 +104,9 @@ class Search:
         self.query = q[2:] if self.feeling_lucky else q
 
         append_args = str(os.getenv('WHOOGLE_CONFIG_PREDEFINED_ARGS', ''))
-        self.query += ' ' + append_args
-        
+        if (self.query.find(append_args) == -1):
+            self.query += ' ' + append_args
+
         return self.query
 
     def generate_response(self) -> str:
