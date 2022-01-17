@@ -78,7 +78,7 @@ If using Heroku Quick Deploy, **you can skip this section**.
 There are a few different ways to begin using the app, depending on your preferences:
 
 ### A) [Heroku Quick Deploy](https://heroku.com/about)
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/benbusby/whoogle-search/tree/main)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/kasperis7/whoogle-search/tree/main)
 
 Provides:
 - Free deployment of app
@@ -363,6 +363,7 @@ These environment variables allow setting default config values, but can be over
 | WHOOGLE_CONFIG_GET_ONLY        | Search using GET requests only                                  |
 | WHOOGLE_CONFIG_URL             | The root url of the instance (`https://<your url>/`)            |
 | WHOOGLE_CONFIG_STYLE           | The custom CSS to use for styling (should be single line)       |
+| WHOOGLE_CONFIG_PREDEFINED_ARGS | Predefined search args (e.g. site=xx.com)                       |
 
 ## Usage
 Same as most search engines, with the exception of filtering by time range.
