@@ -38,6 +38,7 @@ ARG medium_alt='farside.link/scribe'
 ARG translate_alt='lingva.ml'
 ARG imgur_alt='imgin.voidnet.tech'
 ARG wikipedia_alt='wikiless.org'
+ARG extra_args=''
 
 ENV CONFIG_VOLUME=$config_dir \
     WHOOGLE_USER=$username \
@@ -56,7 +57,8 @@ ENV CONFIG_VOLUME=$config_dir \
     WHOOGLE_ALT_MD=$medium_alt \
     WHOOGLE_ALT_TL=$translate_alt \
     WHOOGLE_ALT_IMG=$imgur_alt \
-    WHOOGLE_ALT_WIKI=$wikipedia_alt
+    WHOOGLE_ALT_WIKI=$wikipedia_alt \
+    WHOOGLE_CONFIG_PREDEFINED_ARGS=$extra_args
 
 WORKDIR /whoogle
 
