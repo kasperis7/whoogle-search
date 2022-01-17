@@ -164,5 +164,11 @@
       "description": "[CONFIG] Custom predefined args (e.g. 'site:xxx.com')",
       "value": "",
       "required": false
+    },
+    "WHOOGLE_CONFIG_DISABLE_BANGS": {
+      "description": "[CONFIG] Disable !bangs",
+      "value": "",
+      "required": false
+    }
   }
 }

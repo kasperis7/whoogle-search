@@ -16,10 +16,12 @@ def gen_bangs_json(bangs_file: str) -> None:
     """
     try:
         # Request full list from DDG
-        r = requests.get(DDG_BANGS)
+        r = requests.get(DDG_BANGS, timeout = 1)
         r.raise_for_status()
     except requests.exceptions.HTTPError as err:
-        raise SystemExit(err)
+        # raise SystemExit(err)
+        printk("Running without DDG bangs support")
+        return
 
     # Convert to json
     data = json.loads(r.text)

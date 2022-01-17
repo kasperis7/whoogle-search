@@ -64,7 +64,6 @@ Contents
 <sup>***If deployed to a remote server, or configured to send requests through a VPN, Tor, proxy, etc.</sup>
 
 ## Dependencies
-If using Heroku Quick Deploy, **you can skip this section**.
 
 - Docker ([Windows](https://docs.docker.com/docker-for-windows/install/), [macOS](https://docs.docker.com/docker-for-mac/install/), [Ubuntu](https://docs.docker.com/engine/install/ubuntu/), [other Linux distros](https://docs.docker.com/engine/install/binaries/))
   - Only needed if you intend on deploying the app as a Docker image
@@ -77,56 +76,7 @@ If using Heroku Quick Deploy, **you can skip this section**.
 ## Install
 There are a few different ways to begin using the app, depending on your preferences:
 
-### A) [Heroku Quick Deploy](https://heroku.com/about)
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/kasperis7/whoogle-search/tree/main)
-
-Provides:
-- Free deployment of app
-- Free HTTPS url (https://\<your app name\>.herokuapp.com)
-- Downtime after periods of inactivity \([solution](https://github.com/benbusby/whoogle-search#prevent-downtime-heroku-only)\)
-
-Notes:
-- Requires a (free) Heroku account
-- Sometimes has issues with auto-redirecting to `https`. Make sure to navigate to the `https` version of your app before adding as a default search engine.
-
-### B) [Repl.it](https://repl.it)
-[![Run on Repl.it](https://repl.it/badge/github/benbusby/whoogle-search)](https://repl.it/github/benbusby/whoogle-search)
-
-*Note: Requires a (free) Replit account*
-
-Provides:
-- Free deployment of app
-- Free HTTPS url (https://\<app name\>.\<username\>\.repl\.co)
-    - Supports custom domains
-- Downtime after periods of inactivity \([solution 1](https://repl.it/talk/ask/use-this-pingmat1replco-just-enter/28821/101298), [solution 2](https://repl.it/talk/learn/How-to-use-and-setup-UptimeRobot/9003)\)
-
-### C) [Fly.io](https://fly.io)
-
-You will need a [Fly.io](https://fly.io) account to do this. Fly requires a credit card to deploy anything, but you can have up to 3 shared-CPU VMs running full-time each month for free.
-
-#### Install the CLI:
-
-```bash
-curl -L https://fly.io/install.sh | sh
-```
-
-#### Deploy your app
-
-```bash
-fly apps create --org personal --port 5000
-# Choose a name and the Image builder
-# Enter `benbusby/whoogle-search:latest` as the image name
-fly deploy
-```
-
-Your app is now available at `https://<app-name>.fly.dev`.
-
-You can customize the `fly.toml`:
-- Remove the non-https service
-- Add environment variables under the `[env]` key
-  - Use `fly secrets set NAME=value` for more sensitive values like `WHOOGLE_PASS` and `WHOOGLE_PROXY_PASS`.
-
-### D) [pipx](https://github.com/pipxproject/pipx#install-pipx)
+### A) [pipx](https://github.com/pipxproject/pipx#install-pipx)
 Persistent install:
 
 `pipx install git+https://github.com/benbusby/whoogle-search.git`
@@ -135,7 +85,7 @@ Sandboxed temporary instance:
 
 `pipx run --spec git+https://github.com/benbusby/whoogle-search.git whoogle-search`
 
-### E) pip
+### B) pip
 `pip install whoogle-search`
 
 ```bash
@@ -162,7 +112,7 @@ optional arguments:
 ```
 See the [available environment variables](#environment-variables) for additional configuration.
 
-### F) Manual
+### C) Manual
 
 *Note: `Content-Security-Policy` headers can be sent by Whoogle if you set `WHOOGLE_CSP`.*
 
@@ -240,24 +190,8 @@ sudo systemctl start whoogle
 
 #### Docker CLI
 
-Through Docker Hub:
 ```bash
-docker pull benbusby/whoogle-search
-docker run --publish 5000:5000 --detach --name whoogle-search benbusby/whoogle-search:latest
-```
-
-or with docker-compose:
-
-```bash
-git clone https://github.com/benbusby/whoogle-search.git
-cd whoogle-search
-docker-compose up
-```
-
-or by building yourself:
-
-```bash
-git clone https://github.com/benbusby/whoogle-search.git
+git clone https://github.com/kasperis7/whoogle-search.git
 cd whoogle-search
 docker build --tag whoogle-search:1.0 .
 docker run --publish 5000:5000 --detach --name whoogle-search whoogle-search:1.0
@@ -282,7 +216,7 @@ And kill with: `docker rm --force whoogle-search`
 ```bash
 heroku login
 heroku container:login
-git clone https://github.com/benbusby/whoogle-search.git
+git clone https://github.com/kasperis7/whoogle-search.git
 cd whoogle-search
 heroku create
 heroku container:push web
@@ -364,6 +298,7 @@ These environment variables allow setting default config values, but can be over
 | WHOOGLE_CONFIG_URL             | The root url of the instance (`https://<your url>/`)            |
 | WHOOGLE_CONFIG_STYLE           | The custom CSS to use for styling (should be single line)       |
 | WHOOGLE_CONFIG_PREDEFINED_ARGS | Predefined search args (e.g. site=xx.com)                       |
+| WHOOGLE_CONFIG_DISABLE_BANGS   | Disable !Bangs                                                  |
 
 ## Usage
 Same as most search engines, with the exception of filtering by time range.
