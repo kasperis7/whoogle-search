@@ -26,7 +26,8 @@ from requests import exceptions, get
 from requests.models import PreparedRequest
 
 # Load DDG bang json files only on init
-bang_json = json.load(open(app.config['BANG_FILE']))
+# bang_json = json.load(open(app.config['BANG_FILE'], encoding='utf-8'))
+bang_json = {}
 
 # Check the newest version of WHOOGLE
 update = bsoup(get(app.config['RELEASES_URL']).text, 'html.parser')

@@ -96,8 +96,9 @@ if not os.path.exists(app.config['SESSION_FILE_DIR']):
 # Generate DDG bang filter, and create path if it doesn't exist yet
 if not os.path.exists(app.config['BANG_PATH']):
     os.makedirs(app.config['BANG_PATH'])
-if not os.path.exists(app.config['BANG_FILE']):
-    gen_bangs_json(app.config['BANG_FILE'])
+# DDG cannot be accessed in Mainland China, this statement raises exception
+# if not os.path.exists(app.config['BANG_FILE']):
+#     gen_bangs_json(app.config['BANG_FILE'])
 
 # Build new mapping of static files for cache busting
 if not os.path.exists(app.config['BUILD_FOLDER']):

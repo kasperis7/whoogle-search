@@ -1,9 +1,9 @@
 import os
 import setuptools
 
-long_description = open('README.md', 'r').read()
+long_description = open('README.md', 'r', encoding='utf-8').read()
 
-requirements = list(open('requirements.txt', 'r'))
+requirements = list(open('requirements.txt', 'r', encoding='utf-8'))
 
 optional_dev_tag = ''
 if os.getenv('DEV_BUILD'):

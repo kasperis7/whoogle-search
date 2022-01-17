@@ -16,10 +16,12 @@ def gen_bangs_json(bangs_file: str) -> None:
     """
     try:
         # Request full list from DDG
-        r = requests.get(DDG_BANGS)
+        r = requests.get(DDG_BANGS, timeout=1)
         r.raise_for_status()
     except requests.exceptions.HTTPError as err:
-        raise SystemExit(err)
+        print("DuckDuckGo cannot be accessed")
+        return
+        # raise SystemExit(err)
 
     # Convert to json
     data = json.loads(r.text)
@@ -34,7 +36,7 @@ def gen_bangs_json(bangs_file: str) -> None:
             'suggestion': bang_command + ' (' + row['s'] + ')'
         }
 
-    json.dump(bangs_data, open(bangs_file, 'w'))
+    json.dump(bangs_data, open(bangs_file, 'w', encoding='utf-8'))
 
 
 def resolve_bang(query: str, bangs_dict: dict) -> str:

@@ -164,5 +164,6 @@
       "description": "[CONFIG] Custom predefined args (e.g. 'site:xxx.com')",
       "value": "",
       "required": false
+    }
   }
 }
